@@ -1,5 +1,4 @@
 data/
+extract_dataset/
 *.png
 *.pth
-!folder/
-folder/*
