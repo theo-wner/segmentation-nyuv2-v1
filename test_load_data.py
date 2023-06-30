@@ -25,5 +25,7 @@ dataset = Dataset(x_train_dir, y_train_dir, classes=CLASSES)
 ################################################################################
 # Dataset visualisieren
 ################################################################################
-image, mask = dataset[3]
-visualize_img_mask(image=image, gt_mask=mask, pr_mask=mask, filename='test.png')
+for i in tqdm(range(len(dataset))):
+    image, mask = dataset[i]
+    filename = 'test_' + str(i) + '.png'
+    visualize_img_mask(image, mask, mask, filename=filename)

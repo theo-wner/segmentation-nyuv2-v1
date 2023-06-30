@@ -13,7 +13,7 @@ import shutil
 #os.rmdir('./Abbildungen/')
 
 # Verzeichnis und seine Inhalte löschen
-#shutil.rmtree('./data/')
+shutil.rmtree('./Abbildungen/')
 
 # Neues Verzeichnis erstellen
 #os.mkdir('./extract_dataset/class_labels/')
@@ -22,4 +22,4 @@ import shutil
 #open('./data/seg13/class_labels.txt', 'w')
 
 # Datei kopieren
-shutil.copy('./class_labels.txt', './data/seg40')
+#shutil.copy('./class_labels.txt', './data/seg40')
