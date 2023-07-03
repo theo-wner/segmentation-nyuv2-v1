@@ -130,5 +130,6 @@ def image_to_tensor(x, **kwargs):
 # Transpose ändert die Reihenfolge der Kanäle (row, col, rgb) --> (rgb, row, col)
 ################################################################################
 def mask_to_tensor(x, **kwargs):
-    x = np.expand_dims(x, axis=2)
-    return x.transpose(2, 0, 1).astype('float32')
+    #x = np.expand_dims(x, axis=2)
+    #return x.transpose(2, 0, 1).astype('float32')
+    return x.astype('long')
