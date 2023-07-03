@@ -11,7 +11,7 @@ class Dataset(BaseDataset):
     # Klassenvariable: Alle segmentierbaren Klassen, damit auch nur eine Untermenge an classes
     # übergeben werden kann
     CLASSES = ['bed', 'books', 'ceiling', 'chair', 'floor', 'furniture', 'objects',
-               'picture', 'sofa', 'table' ,'tv', 'wall', 'window', 'unlabeled']
+               'picture', 'sofa', 'table' ,'tv', 'wall', 'window', 'unlabeled', 'no information']
     
     def __init__(self, images_dir, masks_dir, classes=None, augmentation=None, preprocessing=None):
         # Instanzvariable: Liste aller Bildnamen
