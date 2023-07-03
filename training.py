@@ -63,8 +63,8 @@ train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True, num_workers
 # Trainieren
 ################################################################################
 # Loss-Funktion und Metrik festlegen
-loss = smp_utils.losses.CrossEntropyLoss()
-#metrics = [smp_utils.metrics.IoU(ignore_channels=[13, 14])]
+#loss = smp_utils.losses.CrossEntropyLoss(ignore_index=[13, 14])
+metrics = [smp_utils.metrics.IoU(ignore_channels=[13, 14])]
 
 # Optimizer Festlegen
 optimizer = torch.optim.Adam([dict(params=model.parameters(), lr=0.0001)])
