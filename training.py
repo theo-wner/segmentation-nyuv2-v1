@@ -63,14 +63,14 @@ train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True, num_workers
 # Trainieren
 ################################################################################
 # Loss-Funktion und Metrik festlegen
-#loss = smp_utils.losses.CrossEntropyLoss(ignore_index=[13, 14])
+loss = smp_utils.losses.CrossEntropyLoss()
 metrics = [smp_utils.metrics.IoU(ignore_channels=[13, 14])]
 
 # Optimizer Festlegen
 optimizer = torch.optim.Adam([dict(params=model.parameters(), lr=0.0001)])
 
 # TrainEpoch-Objekt erstellen, vereinfacht das Trainieren
-train_epoch = smp_utils.train.TrainEpoch(model, loss=loss, metrics=[], optimizer=optimizer,device=DEVICE,verbose=True)
+train_epoch = smp_utils.train.TrainEpoch(model, loss=loss, metrics=metrics, optimizer=optimizer,device=DEVICE,verbose=True)
 
 # Trainieren
 max_score = 0
@@ -79,12 +79,10 @@ for i in range(0, 40):
     train_logs = train_epoch.run(train_loader)
     
     # Immer das Modell mit dem höchsten iou speichern
-    # if max_score < train_logs['iou_score']:
-    #     max_score = train_logs['iou_score']
-    #     torch.save(model, './best_model_multiclass.pth')
-    #     print('Model saved!')
-    torch.save(model, './best_model_multiclass.pth')
-    print('Model saved!')
+    if max_score < train_logs['iou_score']:
+        max_score = train_logs['iou_score']
+        torch.save(model, './best_model_multiclass.pth')
+        print('Model saved!')
 
     # Nach gewisser Iterationszahl Learning Rate verkleinern    
     if i == 25:
